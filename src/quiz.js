@@ -35,4 +35,15 @@ hasEnded() {
     return this.currentQuestionIndex >= this.questions.length;
 }
 
+filterQuestionsByDifficulty(difficulty) {
+  if (typeof difficulty === 'number' && difficulty >= 1 && difficulty <= 3) {
+      this.questions = this.questions.filter(question => question.difficulty === difficulty);
+  }
+}
+
+averageDifficulty() {
+  const averageDifficulty = this.questions.reduce((sum, currentValue) => sum + currentValue.difficulty, 0);
+  return averageDifficulty / this.questions.length;
+}
+
 }
